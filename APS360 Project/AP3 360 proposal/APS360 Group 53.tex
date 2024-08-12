@@ -1,0 +1,263 @@
+\documentclass{article} % For LaTeX2e
+\usepackage{iclr2022_conference,times}
+% Optional math commands from https://github.com/goodfeli/dlbook_notation.
+\input{math_commands.tex}
+
+%######## APS360: Uncomment your submission name
+\newcommand{\apsname}{Project Proposal}
+%\newcommand{\apsname}{Progress Report}
+%\newcommand{\apsname}{Final Report}
+
+%######## APS360: Put your Group Number here
+\newcommand{\gpnumber}{53}
+
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{graphicx}
+
+%######## APS360: Put your project Title here
+\title{APS360 Team 53 Project Proposal}
+
+
+%######## APS360: Put your names, student IDs and Emails here
+\author{Shixuan (Shawn) Huang  \\
+Student\# 1006964171\\
+shixuan.huang@mail.utoronto.ca \\
+\And 
+Qingran Chen  \\
+Student\# 1006724751 \\
+qingran.chen@mail.utoronto.ca \\
+\AND
+Jiahe Lu  \\
+Student\# 1007213604 \\
+joeyjiahe.lu@mail.utoronto.ca \\
+\And
+Yunxiang Zhang\\
+Student\# 10059850891 \\
+vincentyunxiang.zhang@mail.utoronto.ca \\
+\AND
+}
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to \LaTeX{} to determine where to break
+% the lines. Using \AND forces a linebreak at that point. So, if \LaTeX{}
+% puts 3 of 4 authors names on the first line, and the last on the second
+% line, try using \AND instead of \And before the third author name.
+
+\newcommand{\fix}{\marginpar{FIX}}
+\newcommand{\new}{\marginpar{NEW}}
+
+\iclrfinalcopy 
+%######## APS360: Document starts here
+\begin{document}
+
+
+\maketitle
+
+\begin{abstract}
+This project aims to address the pressing issue of deepfake detection within digital media, spotlighting the necessity for advanced verification methods against deceptive content, such as manipulated videos of well-known personalities. Utilizing deep learning techniques, the initiative develops a Convolutional Neural Network (CNN) model to differentiate authentic visuals from fabricated counterparts. The model is honed on a vast and varied image repository provided by Tushar Padhy, aligning with proven detection strategies from significant online challenges and AI security applications. This abstract presents a blueprint for a detection tool that is not only effective in identifying deepfakes but also adheres to ethical data usage and privacy standards.
+%######## APS360: Do not change the next line. This shows your Main body page count.
+----Total Pages: \pageref{last_page}
+\end{abstract}
+
+
+
+\section{Introduction}
+
+
+Deepfake technology, exemplified by unsettling counterfeit videos of celebrities such as Taylor Swift, underscores the necessity of enhancing security measures for online videos and images. This project in focus employs deep learning, an advanced computational approach, to distinguish between realistic and fabricated content. This technical approach is critical due to the potential of deepfakes to deceive individuals and disrupt sectors such as politics and entertainment. The objective of this project is to augment the safety and reliability of online environments, ensuring the integrity of visual content. Through the application of deep learning, the initiative aims to excel in identifying fabricated content, thereby contributing to a more secure internet landscape.
+
+
+\section{Illustration}
+\label{gen_inst}
+
+This project plans to utilize a CNN model to analyze visual imagery. As demonstrated in figure 1, a human face image was first segmented into pixels and used as input for the model. The model then employs a kernel (e.g., a 3×3 matrix) and applies it to the input to extract convolved features. As these features are passed to deeper layers, the model can identify increasingly complex patterns. Ultimately, the features extracted from the CNN and pooling layers are flattened and transformed into learned features. The final output represents the identified features.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{Figs/cnn.jpg}
+\end{center}
+\caption{Illustration of CNN model. Image: ~\citep{Mandal_2024}.}
+\end{figure}
+
+\section{Background Related Work}
+\label{others}
+
+\subsection{Kaggle Deepfake Detection Challenge:}
+
+AWS, Facebook, Microsoft, the Partnership on AI’s Media Integrity Steering Committee, and academics have come together to build the Deepfake Detection Challenge (DFDC) in 2020. ~\citep{Kaggle_DFDC} This competition provides an example of mature criteria for evaluating the model, including the log loss function used for the final model evaluation. The competition also provides a large public database for reference.
+
+\subsection{Sentinel AI:}
+
+Sentinel is a leading AI-based protection platform that helps democratic governments, defence agencies, and enterprises stop the threat of deepfakes. It is used by leading organizations in Europe.  As demonstrated on the website, this large commercial model also uses neural network classifiers, guiding the future development of the model~\citep{Sentinel}.
+
+\subsection{Deepfake detection accuracy by human and machine:}
+
+This paper deeply explores the performance of human, machine, and crowd wisdom when facing DFDC. It collects human decisions through an experimental website, “Detect Fake.” ~\citep{Fake_Deep} The model generally outperforms individual participants, with an accuracy rate of 80 percent compared to participants' rates ranging from 66 to 69 percent. However, when participants accessed the model's predictions, their accuracy increased, indicating potential for human-AI collaboration in enhancing detection capabilities~\citep{Matthew&Zip}.
+
+\subsection{Deepfake Detection Techniques Using Deep Learning: A Survey:}
+
+This paper briefly reviews the deepfake creation and detection technology. It discussed various methods for detection using convolutional neural networks (CNNs), recurrent neural networks (RNNs), and hybrid approaches. The paper also highlights datasets' importance in training, briefly introducing several reliable public datasets~\citep{Almars_2021}.
+
+\subsection{Deepfake Detection with Deep Learning: }
+
+CNN versus Transformers. This paper details the   performance of  eight deep learning architectures (four CNNs and four Transformers) and compares datasets, observing the strengths and uniqueness of the Deeper Forensics, DFDC, and FF++ 2020 datasets. Overall, CNN models did better in the same train-to-test dataset evaluations, and the Transformers models did better in cross-dataset evaluations. Throughout the eight models, the HRNet, XceptionNet, and EfficientNet B7 CNNs models performed very well consistently when trained and tested on the same dataset. In contrast, the XceptionNet, ViT, BeiT, and Swin Transformer performed better in cross-data validation.~\citep{Vrizlynn}
+
+%\subsubsection{}
+\section{Data Processing}
+\label{others}
+
+In selecting an appropriate dataset for the deep learning model, the collection contributed by Tushar Padhy, comprising over 140,000 portrait images, was selected [7]. This dataset is divided into training, validation, and testing categories, with further segregation into authentic and deepfake images to ensure a balanced representation for in-depth analysis, maintaining a precise 1:1 ratio between the two. Each image is coloured and uniformly set to a resolution of 256x256 pixels, facilitating consistency in the data processing. Importantly, the dataset is characterized by its equitable gender distribution and encompasses a broad spectrum of ages and ethnic backgrounds. It is an exemplary selection for fostering a comprehensive and inclusive model development process. 
+
+The team conducted a visual inspection with random sampling on the dataset across all segments—training, validation, and testing—to identify and remove duplicate images from individuals and across categories, effectively reducing bias and preventing overfitting. The team has emphasized ensuring the authenticity of each image file, eliminating those identified as corrupted. Additionally,  the team has reviewed the dataset to uncover any latent biases towards particular demographic groups. This ensures that the model performs uniformly well across the wide spectrum of ages and ethnic backgrounds represented, maintaining the fairness and dependability of the deepfake detection initiative.
+
+After a comprehensive review of the training, validation, and testing datasets, which revealed no faults or concerns with the images, the team has elected to maintain the original segmentation of these datasets. The team plans to utilize the training set for the development of the model, the validation set for internal testing, and the test set for the ultimate evaluation of the model's performance. The immediate objective is to bolster the model's accuracy in detecting deepfake images by incorporating more training images, subject to the limitations imposed by the project's timeline. It is important to note, however, that the quantity of images integrated into the training process may be revised as the development of the model advances.
+
+\section{Architecture}
+
+This project aims to create a model that detects the deepfake image. In other words, it is an image task classification model. This model consisted of components listed below:
+
+\subsection{Loading the Dataset:}
+
+The model needs to be able to load the cleaned and well-categorized dataset. The model should read these data and be labelled for the output comparison. The team will separate the data into three parts: Training data (used to train the model),  Validation data(to validate the training and discover any overfitting or underfitting and compare with the testing data in the model evaluation), Testing data(to evaluate the model)
+
+\subsection{Training the model and providing results:}
+
+After loading data, the type of neural network needs to be defined. A training function takes in the neural network and trains the model with different hyperparameters. The training should provide two outputs: error(The error rate in training and validating) and loss(Calculating using the choice of loss function to provide how far the prediction is from the expectation). 
+
+\subsection{Plot the training curve:}
+
+Having the training results, the team should plot the training curve and explore whether any overfitting or underfitting exists. To achieve that, the team needs to store the training results in several files on the disk and read from them to plot the training curve.
+
+\subsection{Evaluate the training:}
+
+When the training, analysis, and tuning are complete, the team will evaluate the model using the test data. The evaluation should provide the error rate and loss and be compared with the evaluation of the baseline model.
+
+In this project, the team decided to choose CNN(convolutional neural network) as the neural network:
+\begin{description}
+  \item[$\bullet$ ] The model is based on image processing and classification. 
+  \item[$\bullet$ ] CNN can effectively extract features from images and learn to recognize patterns, making them well-suited for object detection, image segmentation, and classification tasks~\citep{Tripathi_2023}.
+  \item[$\bullet$ ] The convolutional layers of CNN can identify the simple features like texture and edges in the lower level and more complex features like objects in the higher level~\citep{Yamashita_2018}. This capability mirrors how humans visualize the picture.
+  \item[$\bullet$ ] The same weight(filter) is applied across the whole image, thus allowing the network to search for the same features~\citep{Yamashita_2018}. This parameter sharing significantly reduces the parameters needed to compare with the fully connected networks. It makes CNN more efficient in image processing and less overfitting when processing high-dimensional image data.
+  \item[$\bullet$ ] The choice of the loss function will be Binary Cross-Entropy(BCE). The BCE is used for binary classification tasks, where in the model, it will only decide if the image is either deepfaked or not deepfaked (normalized to 0/1). Therefore, BCE is an appropriate choice for the loss function.
+\end{description}
+
+\section{Baseline Model}
+
+The initial architecture of the project employs a Convolutional Neural Network (CNN) designed to process and analyze image data efficiently. This baseline model includes several key components, each chosen for its specific contribution to the model's performance:
+\begin{description}
+  \item[$\bullet$ Convolutional Layer:]  To identify critical features such as textures and edges within the images. The team intends to use 32 filters of size 3x3, a setup that strikes a balance between capturing detailed features and managing computational resources.
+  \item[$\bullet$ Activation Function:] The ReLu (Rectified Linear Unit) function is selected due to its effectiveness in adding non-linearity, which is crucial for learning complex patterns. ReLu is favored for its simplicity and ability to mitigate the vanishing gradient problem.
+  \item[$\bullet$ Pooling Layer:] A max pooling layer with a 2x2 size follows the convolutional layers to reduce the spatial dimensions of the feature maps. This step is vital for decreasing computational load while retaining the most significant features.
+  \item[$\bullet$ Fully Connected Layer: ] This layer integrates the learned features for the final classification. The size of this layer will be adjusted based on the dataset's complexity and the number of output classes to prevent overfitting.
+\end{description}
+
+The baseline model is aimed to be simple but eligible as a reference point to compare with the complex model. The developed advanced model is expected to outperform the baseline model (lower error rate and less loss) to justify the model's improvements in performance. This baseline model's architecture is not only geared towards understanding complex visual inputs but also set up to be a comparative standard for evaluating subsequent models. As the model development progresses, alternative models will be compared against this baseline by varying several aspects:
+\begin{description}
+  \item[$\bullet$ Adjusting Hyperparameters:] The hyperparameters of the baseline model will be set to a default value, where the team will tune the advanced model with different learning rates, batch size, number of layers, the number of filters in convolutional layers, and the size of the fully connected layer. These adjustments can significantly impact the model's learning ability from the dataset. However, both models will be trained with the same number of epochs to be evaluated and visualize how well the advanced model can outperform the baseline model.
+  \item[$\bullet$ Changing Functions:] Experiment with different activation functions like Leaky ReLu or sigmoid to assess their impact on model performance.
+  \item[$\bullet$ Model Architecture Modifications:] Introducing variations in the architecture, such as adding dropout layers to reduce overfitting or incorporating batch normalization to improve training stability.
+\end{description}
+
+The team intends to employ a suite of performance indicators, including accuracy, precision, recall, and the F1 score, for the assessment of these models. Additionally, the computational efficiency and generalization capability of the models will be evaluated by analyzing their performance on a validation set. This strategy aims at enhancing the model's effectiveness and efficiency, ensuring the development of a robust and optimized solution.
+
+\section{Ethical Considerations}
+
+In the pursuit of developing advanced AI models to combat deepfakes, prioritizing the ethical collection and utilization of data, in a manner that honors individual rights, is paramount. The following principles will guide this project:
+
+\subsubsection*{\textbf{Consent Acquisition:}}
+ It is essential to obtain explicit consent from individuals before utilizing their images, videos, or audio recordings for AI training purposes. Utilizing personal data without prior authorization is unethical and can lead to dissatisfaction. Commitment to using data exclusively from individuals who have provided explicit consent will be upheld.
+
+\subsubsection*{\textbf{Privacy Protection:}}
+Safeguarding the privacy of individuals whose data is utilized is crucial. Efforts will include anonymizing data whenever feasible and ensuring that access is restricted to authorized personnel only. Adherence to privacy regulations such as the GDPR is mandatory, yet the commitment extends beyond legal compliance to a moral obligation to protect personal information.
+
+\subsubsection*{\textbf{Ensuring Equity and Mitigating Bias:}}
+ The risk of incorporating biased data, which might not accurately represent diverse populations, thereby introducing unfairness into AI behaviour, is acknowledged. To counteract this, a commitment to utilizing a broad spectrum of data is made, aiming for AI models that are equitable and effective across diverse groups.
+
+\subsubsection*{\textbf{Transparency and Accountability:}}
+A commitment to transparency regarding the methods of data collection, utilization, and safeguarding is established. Additionally, there is an acknowledgment of responsibility for the decisions made in the development and application of AI technologies. Openness to acknowledging errors and rectifying them is essential for maintaining public trust.
+
+By adhering to these ethical guidelines, the objective is to not only enhance the AI models' capability in detecting and thwarting deepfakes but also to ensure the approach respects and upholds the dignity and rights of all individuals. The team is dedicated to advancing this project with a commitment to ethical integrity, aiming to contribute positively to the digital environment.
+
+\section{Project Plan}
+The internal dealine and milestone for the Project has been settled.See Table~\ref{sample-table}
+
+\begin{table}[t]
+\caption{Task Milestone}
+\label{sample-table}
+\begin{center}
+\begin{tabular}{lll}
+\multicolumn{1}{c}{\bf Task}  &\multicolumn{1}{c}{\bf People} &\multicolumn{1}{c}{\bf Internal Deadline} 
+\\ \hline \\
+\textbf{Project Proposal}       \\
+\\ \hline \\
+Data collection         &Vincent/Isabel  &5/Feb \\
+Data cleaning           &Shawn/Joey      &7/Feb \\
+Related-Research        &Isabel/Joey     &7/Feb \\
+Proposal documentation  &All             &9/Feb \\
+\\ \hline \\
+\textbf{Progress Report}       \\
+\\ \hline \\
+CNN model construction         &Vincent/Shawn  &5/Mar \\
+Baseline model construction       &Isabel/Joey  &7/Mar \\
+Primary Model set up        &Vincent/Shawn  &7/Mar \\
+Progress report documentation        &All  &9/Mar \\
+\\ \hline \\
+\textbf{Project Presentation}       \\
+\\ \hline \\
+Report Draft         &Shawn/Isabel  &1/Apr \\
+PowerPoint Setup        &Vincent/Joey  &3/Apr \\
+Recorded Presentation       &All  &3/Apr \\
+\\ \hline \\
+\textbf{Final Report}       \\
+\\ \hline \\
+Final Model Testing        &Vincent/Shawn  &5/Apr \\
+Data collection         &All  &6/Apr \\
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsection{Way of Working Together}
+\begin{description}
+  \item[$\bullet$]Team collaboration on coding will be conducted through Google Colab
+  \item[$\bullet$]Members must immediately inform the project manager of any issues or delays, along with the work completed so far
+  \item[$\bullet$]Weekly meetings will be held for open communication and assignment of coding tasks.
+  \item[$\bullet$]To prevent code conflicts, new code blocks should be clearly labeled with their purpose and the author's name.
+  \item[$\bullet$]Code should be well-commented for clarity, ensuring easy maintenance and readability.
+  \item[$\bullet$]Use Colab's version control to monitor changes; always save a version before significant updates.
+  \item[$\bullet$]Team members should proactively share knowledge and provide constructive feedback in the group chat.
+  \item[$\bullet$]For conflicts, schedule an urgent meeting for resolution; unresolved issues should be taken to the TA by the project manager or a designated person.
+  \item[$\bullet$]Meeting Schedule: Weekly Zoom or Microsoft Teams meetings, with extra meetings arranged as needed.
+  \item[$\bullet$]Communication: Team interaction through WeChat, expecting responses within 24 hours for urgent matters.
+\end{description}
+
+\section{Risk Register}
+Drop-out of member
+\begin{description}
+  \item[$\bullet$]Task re-assignment: If a member drops out, their workload and responsibilities must be immediately reassessed, and tasks should be reassigned within the team to ensure the smooth progress of the project.
+  \item[$\bullet$]Work transfer: Ensure the leaving members have documented and uploaded their work so members can take over their part.
+\end{description}
+Model-training over time
+\begin{description}
+  \item[$\bullet$]Change modeling strategy: change current model training strategies like changing the batch size or other hyperparameters
+  \item[$\bullet$]Dataset Processing: Check the quality and size of the dataset and try to reduce the dataset's size or optimize the data preprocessing pipeline to speed up training.
+  \item[$\bullet$]Internal deadline: set-up internal deadline to prevent emergency issues
+\end{description}
+Work not finished within the internal deadline
+\begin{description}
+  \item[$\bullet$]Task reassignment: Evaluate unfinished work and reassign tasks based on priority to ensure that important tasks are completed
+  \item[$\bullet$]Priority management: Communicate with relevant team members, reassess project goals and work breakout, negotiate with them to adjust deadlines or reschedule work to ensure the quality and timely completion of work.
+\end{description}
+
+\section{Link to GitHub/Colab Notebook}
+https://colab.research.google.com/drive/1FIdtQSsjdUm4Gcgm96ySg1RoQFDVHSYs?usp=sharing
+Link to Dataset: https://www.kaggle.com/datasets/tusharpadhy/deepfake-dataset 
+
+\label{last_page}
+
+\bibliography{APS360_ref}
+\bibliographystyle{iclr2022_conference}
+
+\end{document}
